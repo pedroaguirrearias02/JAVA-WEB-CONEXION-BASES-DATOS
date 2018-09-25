@@ -6,7 +6,6 @@
 package co.edu.uptc.sw2.proyectoangular.dto.persistencia;
 
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.CarreraDTO;
-import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.FacultadDTO;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

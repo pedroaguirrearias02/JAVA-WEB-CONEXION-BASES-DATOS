@@ -1,31 +1,22 @@
 package co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities;
 
 import co.edu.uptc.sw2.entidades.*;
-import javax.ejb.Stateless;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Stateless
+@Entity
 public class CarreraDTO {
 
     private String nombre;
-    private Facultad facultad;
+    private FacultadDTO facultad;
     @Id
     private int id;
-
-    public CarreraDTO(int id, String nombre, Facultad facultad) {
-        this.nombre = nombre;
-        this.facultad = facultad;
-        this.id = id;
-    }
-
-    public CarreraDTO() {
-    }
     
-    public Facultad getFacultad() {
+    public FacultadDTO getFacultad() {
         return facultad;
     }
 
-    public void setFacultad(Facultad facultad) {
+    public void setFacultad(FacultadDTO facultad) {
         this.facultad = facultad;
     }
 
@@ -44,5 +35,4 @@ public class CarreraDTO {
     public void setId(int id) {
         this.id = id;
     }
-    
 }

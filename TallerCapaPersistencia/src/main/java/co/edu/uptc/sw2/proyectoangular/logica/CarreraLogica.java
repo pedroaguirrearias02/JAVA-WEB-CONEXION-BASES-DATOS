@@ -6,9 +6,7 @@
 package co.edu.uptc.sw2.proyectoangular.logica;
 
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.CarreraDAO;
-import co.edu.uptc.sw2.proyectoangular.dto.persistencia.FacultadDAO;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.CarreraDTO;
-import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.FacultadDTO;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -24,15 +22,15 @@ public class CarreraLogica {
     @EJB
     private CarreraDAO carreraDAO;
     
-    public List<CarreraDTO> getFacultades(){
+    public List<CarreraDTO> getCarreras(){
         return carreraDAO.getCarrera();
     }
     
-    public CarreraDTO guardarFacultad(CarreraDTO carreraDTO){
+    public CarreraDTO guardarCarrera(CarreraDTO carreraDTO){
         return carreraDAO.guardarCarrera(carreraDTO);
     }
     
-    public void eliminarFacultad(CarreraDTO carreraDTO){
+    public void eliminarCarrera(CarreraDTO carreraDTO){
         carreraDAO.eliminarCarrera(carreraDTO);
     }
 }
