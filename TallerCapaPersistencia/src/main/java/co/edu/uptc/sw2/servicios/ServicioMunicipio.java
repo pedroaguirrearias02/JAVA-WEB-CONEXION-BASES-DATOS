@@ -1,11 +1,9 @@
 package co.edu.uptc.sw2.servicios;
 
-import c.edu.uptc.sw2.persistencia.Almacenamiento;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.MunicipioDTO;
 import co.edu.uptc.sw2.proyectoangular.logica.MunicipioLogica;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;

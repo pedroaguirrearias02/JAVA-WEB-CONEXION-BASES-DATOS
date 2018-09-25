@@ -1,8 +1,9 @@
 package co.edu.uptc.sw2.servicios;
 
-import c.edu.uptc.sw2.persistencia.Almacenamiento;
-import co.edu.uptc.sw2.entidades.Facultad;
-import java.util.ArrayList;
+import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.FacultadDTO;
+import co.edu.uptc.sw2.proyectoangular.logica.FacultadLogica;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -12,30 +13,33 @@ import javax.ws.rs.PathParam;
 @Path("ServicioFacultad")
 public class ServicioFacultad {
 
+    @EJB
+    private FacultadLogica logica;
+    
     @GET
-    public ArrayList<Facultad> getFacultad() {
-        return Almacenamiento.getInstance().getListFacultads();
+    public List<FacultadDTO> getFacultad() {
+        return logica.getFacultades();
     }
 
    @POST
-    public Facultad guardarFacultad(Facultad facultad) {
-        for (int i = 0; i < Almacenamiento.getInstance().getListFacultads().size(); i++) {
-            if (Almacenamiento.getInstance().getListFacultads().get(i).getId() == (facultad.getId())) {
-                Almacenamiento.getInstance().getListFacultads().get(i).setNombre(facultad.getNombre());
+    public FacultadDTO guardarFacultad(FacultadDTO facultad) {
+        for (int i = 0; i < logica.getFacultades().size(); i++) {
+            if (logica.getFacultades().get(i).getId() == (facultad.getId())) {
+                logica.getFacultades().get(i).setNombre(facultad.getNombre());
                 return facultad;
             }
         }
-        facultad.setId(Almacenamiento.getInstance().getListFacultads().size() + 1);
-        Almacenamiento.getInstance().getListFacultads().add(facultad);
+        facultad.setId(logica.getFacultades().size() + 1);
+        logica.guardarFacultad(facultad);
         return facultad;
     }
     
     @DELETE
     @Path("/{name}")
     public void deleteFacultad(@PathParam("name") String name) {
-        for (int i = 0; i < Almacenamiento.getInstance().getListFacultads().size(); i++) {
-            if (Almacenamiento.getInstance().getListFacultads().get(i).getNombre().equals(name)) {
-                Almacenamiento.getInstance().getListFacultads().remove(i);
+        for (int i = 0; i < logica.getFacultades().size(); i++) {
+            if (logica.getFacultades().get(i).getNombre().equals(name)) {
+                logica.eliminarFacultad(logica.getFacultades().get(i));
             }
         }
     }
