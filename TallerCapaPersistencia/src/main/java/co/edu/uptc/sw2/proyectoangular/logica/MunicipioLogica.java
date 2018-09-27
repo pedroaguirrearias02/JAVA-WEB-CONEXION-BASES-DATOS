@@ -30,7 +30,6 @@ public class MunicipioLogica {
     }
     
     public void eliminarMunicipio(MunicipioDTO municipioDTO){
-        System.out.println("eststtststs: "+municipioDTO);
         municipioDAO.eliminarMunicipio(municipioDTO);
     }
 }
