@@ -2,8 +2,10 @@ package co.edu.uptc.sw2.servicios;
 
 import c.edu.uptc.sw2.persistencia.Almacenamiento;
 import co.edu.uptc.sw2.entidades.Horario;
-import co.edu.uptc.sw2.entidades.Materia;
-import java.util.ArrayList;
+import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.MateriaDTO;
+import co.edu.uptc.sw2.proyectoangular.logica.MateriaLogica;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -12,17 +14,17 @@ import javax.ws.rs.PathParam;
 
 @Path("ServicioMateria")
 public class ServicioMateria {
+    
+    @EJB
+    private MateriaLogica logica;
 
     @DELETE
     @Path("/eliminarHorario")
     public void eliminarHorario(Horario horario) {
-        Materia materia = null;
-        System.out.println("este es el horario eliminado: "+horario);
         for (int i = 0; i < Almacenamiento.getInstance().getListMaterias().size(); i++) {
             for (int j = 0; j < Almacenamiento.getInstance().getListMaterias().get(i).getHorario().size(); j++) {
                 if (Almacenamiento.getInstance().getListMaterias().get(i).getHorario().get(j).getId() == horario.getId()) {
                     Almacenamiento.getInstance().getListMaterias().get(i).getHorario().remove(horario);
-                    materia = Almacenamiento.getInstance().getListMaterias().get(i);
                     break;
                 }
             }
@@ -30,33 +32,33 @@ public class ServicioMateria {
     }
 
     @GET
-    public ArrayList<Materia> getMaterias() {
-        return Almacenamiento.getInstance().getListMaterias();
+    public List<MateriaDTO> getMaterias() {
+        return logica.getMaterias();
     }
 
     @POST
-    public Materia guardarMateria(Materia materia) {
-        for (int i = 0; i < Almacenamiento.getInstance().getListMaterias().size(); i++) {
-            if (Almacenamiento.getInstance().getListMaterias().get(i).getId() == (materia.getId())) {
-                Almacenamiento.getInstance().getListMaterias().get(i).setNombre(materia.getNombre());
-                Almacenamiento.getInstance().getListMaterias().get(i).setCreditos(materia.getCreditos());
-                Almacenamiento.getInstance().getListMaterias().get(i).setProfesor(materia.getProfesor());
-                Almacenamiento.getInstance().getListMaterias().get(i).setHorario(materia.getHorario());
-                Almacenamiento.getInstance().getListMaterias().get(i).setCarrera(materia.getCarrera());
-                return materia;
+    public MateriaDTO guardarMateria(MateriaDTO materiaDTO) {
+        for (int i = 0; i < logica.getMaterias().size(); i++) {
+            if (logica.getMaterias().get(i).getId() == (materiaDTO.getId())) {
+                logica.getMaterias().get(i).setNombre(materiaDTO.getNombre());
+                logica.getMaterias().get(i).setCreditos(materiaDTO.getCreditos());
+                logica.getMaterias().get(i).setProfesor(materiaDTO.getProfesor());
+                logica.getMaterias().get(i).setHorario(materiaDTO.getHorario());
+                logica.getMaterias().get(i).setCarrera(materiaDTO.getCarrera());
+                return materiaDTO;
             }
         }
-        materia.setId(Almacenamiento.getInstance().getListMaterias().size() + 1);
-        Almacenamiento.getInstance().getListMaterias().add(materia);
-        return materia;
+        materiaDTO.setId(logica.getMaterias().size() + 1);
+        logica.guardarMateria(materiaDTO);
+        return materiaDTO;
     }
 
     @DELETE
     @Path("/{name}")
     public void deleteMateria(@PathParam("name") String name) {
-        for (int i = 0; i < Almacenamiento.getInstance().getListMaterias().size(); i++) {
-            if (Almacenamiento.getInstance().getListMaterias().get(i).getNombre().equals(name)) {
-                Almacenamiento.getInstance().getListMaterias().remove(i);
+        for (int i = 0; i < logica.getMaterias().size(); i++) {
+            if (logica.getMaterias().get(i).getId() == Integer.valueOf(name)) {
+                logica.eliminarMateria(logica.getMaterias().get(i));
             }
         }
     }
