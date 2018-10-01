@@ -32,4 +32,8 @@ public class MunicipioLogica {
     public void eliminarMunicipio(MunicipioDTO municipioDTO){
         municipioDAO.eliminarMunicipio(municipioDTO);
     }
+    
+    public MunicipioDTO editarMunicipio(MunicipioDTO mu){
+        return municipioDAO.editarMunicipio(mu);
+    }
 }
