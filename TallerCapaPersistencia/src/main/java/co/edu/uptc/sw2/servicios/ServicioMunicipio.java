@@ -26,7 +26,8 @@ public class ServicioMunicipio {
     public MunicipioDTO guardarMunicipio(MunicipioDTO municipio) {
         for (int i = 0; i < logica.getMunicipios().size(); i++) {
             if (logica.getMunicipios().get(i).getId() == (municipio.getId())) {
-                return logica.editarMunicipio(logica.getMunicipios().get(i));
+                
+                return logica.editarMunicipio(municipio);
             }
         }
         municipio.setId(logica.getMunicipios().size() + 1);

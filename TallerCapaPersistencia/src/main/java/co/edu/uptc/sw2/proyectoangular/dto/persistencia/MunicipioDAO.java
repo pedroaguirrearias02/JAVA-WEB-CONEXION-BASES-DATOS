@@ -8,11 +8,8 @@ package co.edu.uptc.sw2.proyectoangular.dto.persistencia;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.MunicipioDTO;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.NotSupportedException;
-import javax.transaction.SystemException;
 
 /**
  *
@@ -38,13 +35,21 @@ public class MunicipioDAO {
         em.remove(em.find(MunicipioDTO.class, municipioDTO.getId()));
     }
 
-    public MunicipioDTO editarMunicipio(MunicipioDTO municipioDTO) throws NamingException, NotSupportedException, SystemException {
-        //em.getTransaction().begin();
+    public MunicipioDTO editarMunicipio(MunicipioDTO municipioDTO){
         em.merge(municipioDTO);
-//        MunicipioDTO municipioDTO1 = em.find(MunicipioDTO.class, municipioDTO.getId());
-//        municipioDTO1.setNombre(municipioDTO.getNombre());
-        em.getTransaction().commit();
-        em.close();
+//        eliminarMunicipio(municipioDTO);
+//        em.persist(municipioDTO);
+//        UserTransaction transaction = (UserTransaction) em.getTransaction();//(UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+//        transaction.begin();
+//        MunicipioDTO employee = em.find(MunicipioDTO.class, municipioDTO.getId());
+//        employee.setNombre(municipioDTO.getNombre());
+//        String query = "update MunicipioDTO set nombre='"+municipioDTO.getNombre()+"' where id="+municipioDTO.getId();
+//        em.createQuery(query).executeUpdate();
+//        em.createQuery(query).executeUpdate();
+//        em.getTransaction().commit();
+//        em.merge(employee);
+//        transaction.commit();
+//        em.getTransaction().commit();
         return municipioDTO;
     }
 }
