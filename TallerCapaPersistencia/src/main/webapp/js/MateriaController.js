@@ -8,7 +8,7 @@ module.controller('MateriaCtrl', ['$scope', '$filter', '$http', function ($scope
 
         $scope.datosFormulario = {horario: []};
         $scope.panelEditar = false;
-
+        $scope.datosHorario = {};
         //guardar
         $scope.nuevo = function () {
             $scope.panelEditar = true;
@@ -105,11 +105,6 @@ module.controller('MateriaCtrl', ['$scope', '$filter', '$http', function ($scope
 
         $scope.guardarHorario = function () {
             $scope.datosFormulario.horario.push($scope.datosHorario);
-            for (var i = 0; i < $scope.lista.length; i++) {
-                for (var j = 0; j < $scope.lista[i].horario.length; j++) {
-                }
-            }
-
             $('#modalHorario').modal('hide');
         };
       
@@ -119,14 +114,15 @@ module.controller('MateriaCtrl', ['$scope', '$filter', '$http', function ($scope
                 for (var i = 0; i < $scope.lista.length; i++) {
                     for (var j = 0; j < $scope.lista[i].horario.length; j++) {
                         if ($scope.lista[i].horario[j] == data) {
-                            $scope.lista[i].horario.splice(j, 1);
+                            //$scope.lista[i].horario.splice(j, 1);
+                            $scope.datosFormulario.horario.splice(j, 1);
+                            $scope.datosFormulario.horario = $scope.lista[i].horario;
                             break;
-                        }else{
-                            $scope.datosFormulario = {};
                         }
                     }
                 }
             }
+            console.log(data)
             $.ajax({
                 url: './webresources/ServicioEstudiante/eliminarHorario' + data,
                 type: 'DELETE'

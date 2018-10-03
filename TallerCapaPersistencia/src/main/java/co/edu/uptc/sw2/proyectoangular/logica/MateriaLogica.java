@@ -6,8 +6,8 @@
 package co.edu.uptc.sw2.proyectoangular.logica;
 
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.MateriaDAO;
+import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.HorarioDTO;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.MateriaDTO;
-import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.MunicipioDTO;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -34,7 +34,12 @@ public class MateriaLogica {
         materiaDAO.eliminarMateria(materiaDTO);
     }
     
-    public void eliminarHorario(){
-        
+    public void ediatarMateria(MateriaDTO materiaDTO){
+        materiaDAO.editarMateria(materiaDTO);
+    }
+    
+
+    public void eliminarHorario(HorarioDTO horario) {
+        materiaDAO.eliminarHorario(horario);
     }
 }

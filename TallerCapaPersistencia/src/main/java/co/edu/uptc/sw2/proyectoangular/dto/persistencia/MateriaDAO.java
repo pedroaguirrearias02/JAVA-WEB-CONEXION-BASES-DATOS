@@ -5,6 +5,7 @@
  */
 package co.edu.uptc.sw2.proyectoangular.dto.persistencia;
 
+import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.HorarioDTO;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.MateriaDTO;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -45,7 +46,11 @@ public class MateriaDAO {
         em.remove(em.find(MateriaDTO.class, materiaDTO.getId()));
     }
     
-    public void eliminarHorario(){
-        
+    public void editarMateria(MateriaDTO materiaDTO){
+        em.merge(materiaDTO);
+    }
+
+    public void eliminarHorario(HorarioDTO horario) {
+        em.merge(horario);
     }
 }

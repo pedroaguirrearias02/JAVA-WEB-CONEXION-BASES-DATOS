@@ -1,7 +1,7 @@
 package co.edu.uptc.sw2.servicios;
 
 import c.edu.uptc.sw2.persistencia.Almacenamiento;
-import co.edu.uptc.sw2.entidades.Horario;
+import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.HorarioDTO;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.MateriaDTO;
 import co.edu.uptc.sw2.proyectoangular.logica.MateriaLogica;
 import java.util.List;
@@ -20,11 +20,11 @@ public class ServicioMateria {
 
     @DELETE
     @Path("/eliminarHorario")
-    public void eliminarHorario(Horario horario) {
-        for (int i = 0; i < Almacenamiento.getInstance().getListMaterias().size(); i++) {
-            for (int j = 0; j < Almacenamiento.getInstance().getListMaterias().get(i).getHorario().size(); j++) {
-                if (Almacenamiento.getInstance().getListMaterias().get(i).getHorario().get(j).getId() == horario.getId()) {
-                    Almacenamiento.getInstance().getListMaterias().get(i).getHorario().remove(horario);
+    public void eliminarHorario(HorarioDTO horario) {
+        for (int i = 0; i < logica.getMaterias().size(); i++) {
+            for (int j = 0; j < logica.getMaterias().get(i).getHorario().size(); j++) {
+                if (logica.getMaterias().get(i).getHorario().get(j).getId() == horario.getId()) {
+                    logica.eliminarHorario(horario);
                     break;
                 }
             }
@@ -40,11 +40,7 @@ public class ServicioMateria {
     public MateriaDTO guardarMateria(MateriaDTO materiaDTO) {
         for (int i = 0; i < logica.getMaterias().size(); i++) {
             if (logica.getMaterias().get(i).getId() == (materiaDTO.getId())) {
-                logica.getMaterias().get(i).setNombre(materiaDTO.getNombre());
-                logica.getMaterias().get(i).setCreditos(materiaDTO.getCreditos());
-                logica.getMaterias().get(i).setProfesor(materiaDTO.getProfesor());
-                logica.getMaterias().get(i).setHorario(materiaDTO.getHorario());
-                logica.getMaterias().get(i).setCarrera(materiaDTO.getCarrera());
+                logica.ediatarMateria(materiaDTO);
                 return materiaDTO;
             }
         }
