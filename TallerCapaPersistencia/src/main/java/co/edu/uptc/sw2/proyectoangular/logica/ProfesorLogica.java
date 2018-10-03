@@ -6,7 +6,6 @@
 package co.edu.uptc.sw2.proyectoangular.logica;
 
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.ProfesorDAO;
-import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.MunicipioDTO;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.ProfesorDTO;
 import java.util.List;
 import javax.ejb.EJB;
@@ -32,5 +31,9 @@ public class ProfesorLogica {
     
     public void eliminarProfesor(ProfesorDTO profesorDTO){
         profesorDAO.eliminarProfesor(profesorDTO);
+    }
+    
+    public void editarProfesor(ProfesorDTO profesorDTO){
+        profesorDAO.editarProfesor(profesorDTO);
     }
 }

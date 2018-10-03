@@ -5,7 +5,6 @@
  */
 package co.edu.uptc.sw2.proyectoangular.dto.persistencia;
 
-import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.MunicipioDTO;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.ProfesorDTO;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -34,5 +33,9 @@ public class ProfesorDAO {
     
     public void eliminarProfesor(ProfesorDTO profesorDTO){
         em.remove(em.find(ProfesorDTO.class, profesorDTO.getId()));
+    }
+    
+    public void editarProfesor(ProfesorDTO profesorDTO){
+        em.merge(profesorDTO);
     }
 }

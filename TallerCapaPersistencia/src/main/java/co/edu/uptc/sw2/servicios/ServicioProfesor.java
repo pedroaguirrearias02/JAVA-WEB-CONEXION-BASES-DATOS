@@ -25,9 +25,7 @@ public class ServicioProfesor {
     public ProfesorDTO guardarProfesor(ProfesorDTO profesorDTO) {
         for (int i = 0; i < logica.getProfesores().size(); i++) {
             if (logica.getProfesores().get(i).getId() == profesorDTO.getId()) {
-                logica.getProfesores().get(i).setNombres(profesorDTO.getNombres());
-                logica.getProfesores().get(i).setApellidos(profesorDTO.getApellidos());
-                logica.getProfesores().get(i).setDocumento(profesorDTO.getDocumento());
+                logica.editarProfesor(profesorDTO);
                 return profesorDTO;
             }
         }
