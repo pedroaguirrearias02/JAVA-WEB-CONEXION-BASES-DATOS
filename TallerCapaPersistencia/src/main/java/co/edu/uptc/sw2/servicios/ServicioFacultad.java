@@ -25,7 +25,7 @@ public class ServicioFacultad {
     public FacultadDTO guardarFacultad(FacultadDTO facultad) {
         for (int i = 0; i < logica.getFacultades().size(); i++) {
             if (logica.getFacultades().get(i).getId() == (facultad.getId())) {
-                logica.getFacultades().get(i).setNombre(facultad.getNombre());
+                logica.editarFacultad(facultad);
                 return facultad;
             }
         }

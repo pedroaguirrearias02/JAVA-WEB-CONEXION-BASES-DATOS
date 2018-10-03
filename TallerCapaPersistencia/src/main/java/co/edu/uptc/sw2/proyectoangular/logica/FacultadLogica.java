@@ -32,4 +32,8 @@ public class FacultadLogica {
     public void eliminarFacultad(FacultadDTO facultadDTO){
         facultadDAO.eliminarFacultad(facultadDTO);
     }
+    
+    public FacultadDTO editarFacultad(FacultadDTO facultadDTO){
+        return facultadDAO.editarFacultad(facultadDTO);
+    }
 }

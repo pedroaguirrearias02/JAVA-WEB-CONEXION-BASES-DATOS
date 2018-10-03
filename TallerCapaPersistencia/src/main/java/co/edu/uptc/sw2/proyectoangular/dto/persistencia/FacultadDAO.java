@@ -35,4 +35,9 @@ public class FacultadDAO {
     public void eliminarFacultad(FacultadDTO facultadDTO){
         em.remove(em.find(FacultadDTO.class, facultadDTO.getId()));
     }
+    
+    public FacultadDTO editarFacultad(FacultadDTO facultadDTO){
+        em.merge(facultadDTO);
+        return facultadDTO;
+    }
 }
