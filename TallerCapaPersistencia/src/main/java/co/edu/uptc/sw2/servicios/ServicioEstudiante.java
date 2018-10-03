@@ -25,13 +25,7 @@ public class ServicioEstudiante {
     public EstudianteDTO guardarEstudiante(EstudianteDTO estudianteDTO) {
         for (int i = 0; i < logica.getEstudiantes().size(); i++) {
             if (logica.getEstudiantes().get(i).getId() == (estudianteDTO.getId())) {
-                logica.getEstudiantes().get(i).setNombre(estudianteDTO.getNombre());
-                logica.getEstudiantes().get(i).setApellidos(estudianteDTO.getApellidos());
-                logica.getEstudiantes().get(i).setCodigo(estudianteDTO.getCodigo());
-                logica.getEstudiantes().get(i).setDocumento(estudianteDTO.getDocumento());
-                logica.getEstudiantes().get(i).setFechaNacimiento(estudianteDTO.getFechaNacimiento());
-                logica.getEstudiantes().get(i).setCarrera(estudianteDTO.getCarrera());
-                logica.getEstudiantes().get(i).setMunicipio(estudianteDTO.getMunicipio());
+                logica.editarEstudiante(estudianteDTO);
                 return estudianteDTO;
             }
         }

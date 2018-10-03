@@ -5,9 +5,7 @@
  */
 package co.edu.uptc.sw2.proyectoangular.logica;
 
-import co.edu.uptc.sw2.proyectoangular.dto.persistencia.CarreraDAO;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.EstudianteDAO;
-import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.CarreraDTO;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.EstudianteDTO;
 import java.util.List;
 import javax.ejb.EJB;
@@ -34,4 +32,8 @@ public class EstudianteLogica {
     public void eliminarEstudiante(EstudianteDTO carreraDTO){
         estudianteDAO.eliminarEstudiante(carreraDTO);
     }
+    
+   public void editarEstudiante(EstudianteDTO estudianteDTO){
+       estudianteDAO.editarEstudiante(estudianteDTO);
+   }
 }

@@ -34,4 +34,8 @@ public class EstudianteDAO {
     public void eliminarEstudiante(EstudianteDTO estudianteDTO){
         em.remove(em.find(EstudianteDTO.class, estudianteDTO.getId()));
     }
+    
+    public void editarEstudiante(EstudianteDTO estudianteDTO){
+        em.merge(estudianteDTO);
+    }
 }
