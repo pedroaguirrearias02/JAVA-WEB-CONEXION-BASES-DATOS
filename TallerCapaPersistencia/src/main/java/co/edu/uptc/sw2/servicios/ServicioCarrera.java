@@ -27,8 +27,7 @@ public class ServicioCarrera {
     public CarreraDTO guardarCarrera(CarreraDTO carreraDTO) {
         for (int i = 0; i < logica.getCarreras().size(); i++) {
             if (logica.getCarreras().get(i).getId() == (carreraDTO.getId())) {
-                logica.getCarreras().get(i).setNombre(carreraDTO.getNombre());
-                logica.getCarreras().get(i).setFacultad(carreraDTO.getFacultad());
+                logica.editarCarrera(carreraDTO);
                 return carreraDTO;
             }
         }

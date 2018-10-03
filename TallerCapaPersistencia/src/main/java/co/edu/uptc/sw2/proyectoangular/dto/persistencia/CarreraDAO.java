@@ -34,4 +34,8 @@ public class CarreraDAO {
     public void eliminarCarrera(CarreraDTO carreraDTO){
         em.remove(em.find(CarreraDTO.class, carreraDTO.getId()));
     }
+    
+    public void editarCarrera(CarreraDTO carreraDTO){
+        em.merge(carreraDTO);
+    }
 }

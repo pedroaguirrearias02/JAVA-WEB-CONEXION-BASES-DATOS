@@ -33,4 +33,8 @@ public class CarreraLogica {
     public void eliminarCarrera(CarreraDTO carreraDTO){
         carreraDAO.eliminarCarrera(carreraDTO);
     }
+    
+    public void editarCarrera(CarreraDTO carreraDTO){
+        carreraDAO.editarCarrera(carreraDTO);
+    }
 }
