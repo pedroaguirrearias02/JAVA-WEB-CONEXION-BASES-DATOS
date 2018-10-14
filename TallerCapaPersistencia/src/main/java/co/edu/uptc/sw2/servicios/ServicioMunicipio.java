@@ -30,7 +30,7 @@ public class ServicioMunicipio {
                 return logica.editarMunicipio(municipio);
             }
         }
-        municipio.setId(logica.getMunicipios().size() + 1);
+//        municipio.setId(logica.getMunicipios().size() + 1);
         logica.guardarMunicipio(municipio);
         return municipio;
     }

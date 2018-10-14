@@ -29,7 +29,7 @@ public class ServicioFacultad {
                 return facultad;
             }
         }
-        facultad.setId(logica.getFacultades().size() + 1);
+//        facultad.setId(logica.getFacultades().size() + 1);
         logica.guardarFacultad(facultad);
         return facultad;
     }

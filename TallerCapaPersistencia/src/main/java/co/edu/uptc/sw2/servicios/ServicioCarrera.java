@@ -31,7 +31,7 @@ public class ServicioCarrera {
                 return carreraDTO;
             }
         }
-        carreraDTO.setId(logica.getCarreras().size() + 1);
+//        carreraDTO.setId(logica.getCarreras().size() + 1);
         logica.guardarCarrera(carreraDTO);
         return carreraDTO;
     }

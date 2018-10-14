@@ -49,8 +49,7 @@ module.controller('MunicipioCtrl', ['$scope', '$filter', '$http', function ($sco
         $scope.guardarMunicipio = function () {
             $http.post("./webresources/ServicioMunicipio", $scope.datosFormulario)
                     .then(function (response) {
-                        console.log($scope.datosFormulario);
-                        //$scope.getMunicipios();
+                        $scope.getMunicipios();
                 
                     });
             $scope.panelEditar = false;

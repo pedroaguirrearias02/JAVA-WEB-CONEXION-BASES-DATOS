@@ -54,7 +54,6 @@ module.controller('MateriaCtrl', ['$scope', '$filter', '$http', function ($scope
             $scope.lista = null;
             $http.get("./webresources/ServicioMateria", {})
                     .then(function (response) {
-                        console.log(response.data);
                         $scope.lista = response.data;
                         for (var i = 0; i < $scope.lista.length; i++) {
                             for (var j = 0; j < $scope.lista[i].horario.length; j++) {

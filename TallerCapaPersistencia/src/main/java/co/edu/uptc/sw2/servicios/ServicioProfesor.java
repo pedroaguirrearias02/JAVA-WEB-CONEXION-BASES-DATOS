@@ -29,7 +29,7 @@ public class ServicioProfesor {
                 return profesorDTO;
             }
         }
-        profesorDTO.setId(logica.getProfesores().size() + 1);
+//        profesorDTO.setId(logica.getProfesores().size() + 1);
         logica.guardarProfesor(profesorDTO);
         return profesorDTO;
     }

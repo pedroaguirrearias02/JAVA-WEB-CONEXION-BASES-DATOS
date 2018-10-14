@@ -1,6 +1,5 @@
 package co.edu.uptc.sw2.servicios;
 
-import c.edu.uptc.sw2.persistencia.Almacenamiento;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.HorarioDTO;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.MateriaDTO;
 import co.edu.uptc.sw2.proyectoangular.logica.MateriaLogica;
@@ -44,7 +43,7 @@ public class ServicioMateria {
                 return materiaDTO;
             }
         }
-        materiaDTO.setId(logica.getMaterias().size() + 1);
+//        materiaDTO.setId(logica.getMaterias().size() + 1);
         logica.guardarMateria(materiaDTO);
         return materiaDTO;
     }

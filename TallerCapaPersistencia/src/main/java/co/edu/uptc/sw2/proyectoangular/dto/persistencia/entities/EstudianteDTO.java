@@ -2,6 +2,8 @@ package co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 
@@ -17,6 +19,7 @@ public class EstudianteDTO {
     private CarreraDTO carrera;
     private MunicipioDTO municipio;
     @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     public String getNombre() {

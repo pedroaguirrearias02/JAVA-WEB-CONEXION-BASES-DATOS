@@ -22,9 +22,3 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 var module = angular.module("adminUniversidad.controllers", []);
 
-
-app.config(function ($mdDateLocaleProvider) {
-    $mdDateLocaleProvider.formatDate = function (date) {
-        return moment(date).format('DD/MM/YYYY');
-    };
-});

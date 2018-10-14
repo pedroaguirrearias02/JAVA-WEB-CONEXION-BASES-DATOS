@@ -5,7 +5,7 @@ module.controller('EstudiantesCtrl', ['$scope', '$filter', '$http', function ($s
         $scope.lista = null;
         $scope.listaMunicipio = null;
         $scope.listaCarrera = null;
-        
+
         $scope.datosFormulario = {};
         $scope.panelEditar = false;
 
@@ -30,7 +30,11 @@ module.controller('EstudiantesCtrl', ['$scope', '$filter', '$http', function ($s
             $http.get("./webresources/ServicioEstudiante", {})
                     .then(function (response) {
                         $scope.lista = response.data;
-                        $scope.datosFormulario = {};
+                        for (var i = 0; i < $scope.lista.length; i++) {
+                            var dat = $scope.lista[i].fechaNacimiento.toString();
+                            $scope.lista[i].fechaNacimiento = dat.slice(0, dat.length - 5);
+
+                        }
                     }, function () {
                         alert("Error al consultar el estudiante");
                     });

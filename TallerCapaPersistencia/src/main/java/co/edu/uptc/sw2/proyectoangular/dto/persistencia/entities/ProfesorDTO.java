@@ -1,12 +1,15 @@
 package co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class ProfesorDTO {
 
     @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombres;
     private String apellidos;

@@ -38,7 +38,6 @@ public class MateriaDAO {
      */
     public MateriaDTO guardarMateria(MateriaDTO materiaDTO){
         em.persist(materiaDTO);
-        em.flush();
         return  materiaDTO;
     }
     
